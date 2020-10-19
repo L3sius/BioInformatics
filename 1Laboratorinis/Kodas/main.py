@@ -34,7 +34,7 @@ def removeUselessCodons(seq):
 
 def completeAssignment(file_name, number):
     # Read file
-    for seq_record in SeqIO.parse("J:/Universitetas/BioInformatika/1Laboratorinis/viruses/data/" + file_name,
+    for seq_record in SeqIO.parse("J:/Universitetas/BioInformatika/BioInformatics/1Laboratorinis/viruses/data/" + file_name,
                                   "fasta"):
         seq_record.seq  # Check if list gets parsed
 
@@ -104,6 +104,7 @@ def calculateMatrix():
         z1 += 1
 
     print("Matrix")
+    print("B1 | B2 | B3 | B4 | M1 | M2 | M3 | M4")
     # Matrix output
     for elem in distance:
         for value in elem:
