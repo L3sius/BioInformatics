@@ -31,17 +31,7 @@ F1 - pirmas failas, F2 - antras failas<br/>
 
 x1+x2+x3+x4 - suma, kuria įstatom į matricą.<br/>
 
-   | b1 | b2 | b3 | b4 | m1 | m2 | m3 | m4 |<br/>
-b1 | x  |    |    |    |    |    |    |    |<br/>
-b2 |    | x  |    |    |    |    |    |    |<br/>
-b3 |    |    | x  |    |    |    |    |    |<br/>
-b4 |    |    |    | x  |    |    |    |    |<br/>
-m1 |    |    |    |    | x  |    |    |    |<br/>
-m2 |    |    |    |    |    | x  |    |    |<br/>
-m3 |    |    |    |    |    |    | x  |    |<br/>
-m4 |    |    |    |    |    |    |    | x  |<br/>
-
-Nesunku yra konvertuoti ir į philip formatą, kuris atrodytų taip:
+Philip formatas (matrica), atrodytų taip:
 
 8<br/>
 b1 X, skaičius(b2), skaičius(b3), skaičius(b4), skaičius(m1), skaičius(m2), skaičius(m3), skaičius (m4)<br/>
