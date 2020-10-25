@@ -34,8 +34,9 @@ def removeUselessCodons(seq):
 
 def completeAssignment(file_name, number):
     # Read file
-    for seq_record in SeqIO.parse("J:/Universitetas/BioInformatika/BioInformatics/1Laboratorinis/viruses/data/" + file_name,
-                                  "fasta"):
+    for seq_record in SeqIO.parse(
+            "J:/Universitetas/BioInformatika/BioInformatics/1Laboratorinis/viruses/data/" + file_name,
+            "fasta"):
         seq_record.seq  # Check if list gets parsed
 
     # 1 užduotis
@@ -69,9 +70,22 @@ def completeAssignment(file_name, number):
     # printSequenceList("Longest codons:", listFrameCodonSeq)
 
     # 4 užduotis find frequencies
-    # printSequenceList("Longest codons:", listFrameCodonSeq)
     # print(listFrameCodonSeq)
-    sequenceString = ''.join(listFrameCodonSeq)  # Combine all list elements to one big string
+
+    findCodonSequence(listFrameCodonSeq)
+
+    print("File name: ", file_name)
+    # print('Normalized ATG:', ATG[number])
+    # print('Normalized TAA:', TAA[number])
+    # print('Normalized TAG:', TAG[number])
+    # print('Normalized TGA:', TGA[number])
+
+    findDiCodonSequence(listFrameCodonSeq)
+
+
+def findCodonSequence(seq):
+    split = 3
+    sequenceString = ''.join(seq)  # Combine all list elements to one big string
     sequenceStringSplit = [sequenceString[i:i + split] for i in range(0, len(sequenceString), split)]
     # print(sequenceStringSplit)
     counts = Counter(sequenceStringSplit)  # Count different triplets
@@ -80,15 +94,75 @@ def completeAssignment(file_name, number):
     TAA[number] = counts['TAA'] / sum(counts.values())
     TAG[number] = counts['TAG'] / sum(counts.values())
     TGA[number] = counts['TGA'] / sum(counts.values())
-    print("File name: ", file_name)
-    print('Normalized ATG:', ATG[number])
-    print('Normalized TAA:', TAA[number])
-    print('Normalized TAG:', TAG[number])
-    print('Normalized TGA:', TGA[number])
 
 
-def calculateMatrix():
-    # calculate distance matrix
+def findDiCodonSequence(seq):
+    from Bio.Seq import Seq
+    text = ""
+    for element in seq:
+        text += element
+
+    dna = Seq(text)
+    translated_dna = dna.translate()
+    # print(translated_dna)
+
+    i = 0
+    diCodonSequence = []
+    while i < len(translated_dna) - 1:
+        if translated_dna[i] != '*' and translated_dna[i + 1] != '*':
+            diCodonSequence.append(translated_dna[i] + translated_dna[i + 1])
+        i += 1
+    counts = Counter(diCodonSequence)  # Count different dicodons
+    # print(counts)
+    diCodonList[number] = counts.items()
+    diCodonListSum[number] = sum(counts.values())
+
+    # print(diCodonList[number])
+    sortedDiCodonDictionary[number] = sorted(diCodonList[number])
+    # print(sortedDiCodonDictionary[number])
+    # print(diCodonListSum[number])
+
+
+def calculateDiCodonMatrix():
+    # calculate DiCodon distance matrix
+
+    z1 = 0
+    distance = []
+
+    while z1 < number:
+        z2 = 0
+        distance_row = []
+        while z2 < number:
+            diCodonSum = 0
+            z3 = 0
+            if len(sortedDiCodonDictionary[z1]) < len(sortedDiCodonDictionary[z2]):
+                while z3 < len(sortedDiCodonDictionary[z1]):
+                    diCodonSum += pow(
+                        (sortedDiCodonDictionary[z1][z3])[1] / diCodonListSum[z1] - (sortedDiCodonDictionary[z2][z3])[
+                            1] / diCodonListSum[z2], 2)
+                    z3 += 1
+            if len(sortedDiCodonDictionary[z1]) >= len(sortedDiCodonDictionary[z2]):
+                while z3 < len(sortedDiCodonDictionary[z2]):
+                    diCodonSum += pow(
+                        (sortedDiCodonDictionary[z1][z3])[1] / diCodonListSum[z1] - (sortedDiCodonDictionary[z2][z3])[
+                            1] / diCodonListSum[z2], 2)
+                    z3 += 1
+            distance_row.append(diCodonSum)
+            z2 += 1
+        distance.append(distance_row)
+        z1 += 1
+
+    print("DiCodon Matrix output")
+    print("B1 | B2 | B3 | B4 | M1 | M2 | M3 | M4")
+    # DiCodon Matrix output
+    for elem in distance:
+        for value in elem:
+            print("%.6f" % value, end=" ")
+        print()
+
+
+def calculateCodonMatrix():
+    # calculate codon distance matrix
     z1 = 0
     distance = []
 
@@ -103,9 +177,9 @@ def calculateMatrix():
         distance.append(distance_row)
         z1 += 1
 
-    print("Matrix")
+    print("Codon Matrix output")
     print("B1 | B2 | B3 | B4 | M1 | M2 | M3 | M4")
-    # Matrix output
+    # Codon Matrix output
     for elem in distance:
         for value in elem:
             print("%.6f" % value, end=" ")
@@ -123,6 +197,9 @@ if __name__ == '__main__':
     TAA = [0] * 8
     TAG = [0] * 8
     TGA = [0] * 8
+    diCodonList = [0] * 8
+    diCodonListSum = [0] * 8
+    sortedDiCodonDictionary = [0] * 8
     completeAssignment("bacterial1.fasta", number)
     number += 1
     completeAssignment("bacterial2.fasta", number)
@@ -146,7 +223,8 @@ if __name__ == '__main__':
     # print(TAG)
     # print(TGA)
 
-    calculateMatrix()  # Calculate Matrix
+    calculateCodonMatrix()  # Calculate Codon Matrix
+    calculateDiCodonMatrix()  # Calculate DiCodon Matrix
 
     #      | b1 | b2 | b3 | b4 | m1 | m2 | m3 | m4 |
     #   b1 | x  |    |    |    |    |    |    |    |
@@ -157,6 +235,8 @@ if __name__ == '__main__':
     #   m2 |    |    |    |    |    | x  |    |    |
     #   m3 |    |    |    |    |    |    | x  |    |
     #   m4 |    |    |    |    |    |    |    | x  |
+
+    # Old code that was used
 
     # findCodonSeq(seq_record.seq, listFrame1)
     # findCodonSeq(seq_record.seq.reverse_complement(), listReverse)
