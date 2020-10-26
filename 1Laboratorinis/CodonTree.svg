@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg width="1465" height="842" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g style="stroke:black;fill:lightgreen" transform="translate(30,30)">
+<line x1="717" y1="361" x2="723" y2="355" style="stroke:blue; stroke-width:1"/>
+<line x1="723" y1="355" x2="723" y2="355" style="stroke:blue; stroke-width:1"/>
+<line x1="723" y1="355" x2="723" y2="363" style="stroke:blue; stroke-width:1"/>
+<line x1="723" y1="355" x2="293" y2="177" style="stroke:blue; stroke-width:1"/>
+<line x1="293" y1="177" x2="299" y2="183" style="stroke:blue; stroke-width:1"/>
+<line x1="293" y1="177" x2="24" y2="177" style="stroke:blue; stroke-width:1"/>
+<line x1="723" y1="355" x2="717" y2="406" style="stroke:blue; stroke-width:1"/>
+<line x1="717" y1="406" x2="716" y2="408" style="stroke:blue; stroke-width:1"/>
+<line x1="717" y1="406" x2="734" y2="431" style="stroke:blue; stroke-width:1"/>
+<line x1="734" y1="431" x2="734" y2="423" style="stroke:blue; stroke-width:1"/>
+<line x1="734" y1="431" x2="1203" y2="625" style="stroke:blue; stroke-width:1"/>
+<line x1="1203" y1="625" x2="1206" y2="629" style="stroke:blue; stroke-width:1"/>
+<line x1="1203" y1="625" x2="1291" y2="625" style="stroke:blue; stroke-width:1"/>
+<text x="717" y="362" font-weight = "10" font-family="verdana" fill="black" font-size="18">B1</text>
+<text x="717" y="362" font-weight = "10" font-family="verdana" fill="black" font-size="18">M4</text>
+<text x="287" y="184" font-weight = "10" font-family="verdana" fill="black" font-size="18">B3</text>
+<text x="10" y="184" font-weight = "10" font-family="verdana" fill="black" font-size="18">B4</text>
+<text x="704" y="420" font-weight = "10" font-family="verdana" fill="black" font-size="18">M1</text>
+<text x="728" y="438" font-weight = "10" font-family="verdana" fill="black" font-size="18">M3</text>
+<text x="1206" y="642" font-weight = "10" font-family="verdana" fill="black" font-size="18">B2</text>
+<text x="1293" y="632" font-weight = "10" font-family="verdana" fill="black" font-size="18">M2</text>
+</g></svg>

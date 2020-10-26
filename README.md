@@ -110,3 +110,13 @@ M1 0.001802 0.000460 0.000408 0.002124 0.000594 0.000887 0.001198 <br/>
 M2 0.001979 0.000387 0.000722 0.002151 0.000594 0.001464 0.000344 <br/>
 M3 0.001539 0.000766 0.000820 0.002062 0.000887 0.001464 0.002201 <br/>
 M4 0.002768 0.000908 0.001409 0.002822 0.001198 0.000344 0.002201 <br/>
+
+
+Ką mes gauname? (Medžių nuotraukos yra įkeltos į "1Laboratornis" aplanką)
+
+Nagrinėjant rezultatą (DiCodonTree.svg) yra matomi, jog klasterizuoja jis į 4 dalis, o ir pačios dalys yra žymiai didesnio atstumo tarpusavyje, negu kodonų dažnių medžio.
+Nagrinėjant rezultatą (CodonTree.svg) yra matoma, jog klasterizuoja jis į 4 dalis, bet pačios atšakos yra minimalaus atstumo tarpusavyje. Tos 4 dalys yra B4 ir B3, B1 ir M4, M1 ir M3, B2 ir M2.
+
+Iškart galima pamatyti ir didelį skirtumą tarp skirtingų medžių - dažnis tarp kodonų ir dikodonų labai skiriasi. Be abejo, tai gali būti dėl to, jog buvo atlikti klaidingi skaičiavimai, arba tai, jog
+skaičiuojant dikodonų reikšmes buvo naudojamas translate() ir tolimesni atitinkami veiksmai. Taip pat galima pamatyti iš klasterių, kad kai kur bakterijų ir žinduolių virusų dažnis sutampa. Labiausiai, mano supratimu,
+varijuoja B4 virusas tiek kodonų, tiek dikodonų medyje.
