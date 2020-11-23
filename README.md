@@ -3,6 +3,32 @@
 
 Failas BiopythonTutorial.py buvo naudojamas mokantis BioPython bibliotekos
 
+# Antras laboratorinis darbas
+
+Šioje skiltyje pateiksiu atsakymus į antro laboratorinio darbo klausimus.
+
+1. Tai pirmiausia svarbu suprasti, kuo jie panašūs yra (fasta ir fastQ formatas): <br/>
+	1.1. Abu formatai kaupia sekos duomenis bei sekos metaduomenis (angl. data and metadata). <br/>
+	1.2. Abu formatai yra pagrįsti tekstu (angl. text-based). <br/>
+Koks skirtumas tarp jų? fastQ formatas buvo sugalvotas išspręsti konkrečią sekos metu kylančią problemą: atsižvelgiant į tai, kaip veikia skirtingos sekvenavimo technologijos, tikimybė, kad teisingai identifikuotas bus nukleotidas labai skiriasi. Fasta formatas neturi standartizuoto būdo tai užkuduoti. Užtat fastQ yra papildomai atsirandanti nukleotido kokybės balų seka. (angl. sequence of quality scores) <br/>
+Iš esmės fastQ padeda tiesiog nustatyti papildomai sekos kokybę. <br/>
+Papildoma informacija, kuri yra pateikiama fastQ formate: <br/>
+a) Eilutė, prasidedanti @, kurioje yra sekos ID. <br/>
+b) Viena ar daugiau eilučių, kuriose yra seka. <br/>
+c) Nauja eilutė, prasidedanti simboliu +, tuščia arba kartojanti sekos ID. <br/>
+d) Viena ar daugiau eilučių, kuriose yra kokybės balai. <br/>
+
+
+2. Prie mėnesio dienos kurią gimiau (8-diena) pridedu 33 ir ASCII simbolis būtų: 8+33=41 ")"
+
+3. Jei būtų naudojami mažesni negu 33 ASCII simboliai tai sekos galėtų įgauti neigiamą kokybės balą.
+
+4. a) Nustačiau, jog koduotė naudojama failiuke buvo: arba Sanger Phread+33 arba Illumina 1.8+ Phread+33, nes tik jos praėjo mano parašyta scriptuką. Kitos koduotės netenkina, nes buvo panaudoti ASCII simboliai į jas neįeinantys. (Pavyzdžiui skaičiai). Kodėl programa meta, kad gali būti arba Sanger arba Illumina 1.8? Nes šios dvi koduotės yra panašios ir skiriasi tik per vieną ASCII simbolį "j", o kadangi failiuke nebuvo šito simbolio, negalima pilnai nustatyti, kuri koduotė čia yra naudojama.
+
+b) Atlikau papildomus skaičiavimus, kad surasti C/G nukleotidų pasiskirstymą reade. Tam naudojau kelias funkcijas, tai būtų: GCratio(sequence), į kurią paduodame DNR seką ir atrandom, o atgal gaunam jau santykį C/G nukleotidų esantį toje sekoje. Taip pat dar naudojau funkciją round(number,decimal=0). Jos dėka aš galiu apvalinti gautus atsakymus iki X.XX (dviejų skaičių po kablelio). Galu gale gautus atsakymus surašiau į excel dokumentą (GCAnalizė.xlsx, jis randasi "2Laboratorinis" aplankale). Iš susidariusios lentelės galima matyti, kad buvo keli "peakai", tai būtų iki 0.36, tada nuo to iki 0.54, bei dar vienas nuo to iki 0.70.
+	
+5. Šitame mėginyje buvo, pavyzdžiui, bakterijų su dideliu atspurumu karštai temperatūrai, nes buvo nemažai didelių C/G nukleotidų pasiskirstymų.
+
 # Pirmas laboratorinis darbas
 
 Šiame kode bus labai daug užkomentuotų eilučių, dažniausiai tai bus print() funkcijos, kurios leis pasižiūrėti tarpinius atsakymus.
