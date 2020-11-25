@@ -1,5 +1,5 @@
 # BioInformatika
-Šiame dokumente aš aprašysiu laisva forma pirmo laboratorinio darbo analizę bei funkcijas įgyvendintas šiame kode ir ką jos atlieka.
+Šiame dokumente aš aprašysiu laisva forma laboratorinių darbų analizes bei funkcijas įgyvendintas kode ir ką jos atlieka.
 
 Failas BiopythonTutorial.py buvo naudojamas mokantis BioPython bibliotekos
 
@@ -10,8 +10,10 @@ Failas BiopythonTutorial.py buvo naudojamas mokantis BioPython bibliotekos
 1. Tai pirmiausia svarbu suprasti, kuo jie panašūs yra (fasta ir fastQ formatas): <br/>
 	1.1. Abu formatai kaupia sekos duomenis bei sekos metaduomenis (angl. data and metadata). <br/>
 	1.2. Abu formatai yra pagrįsti tekstu (angl. text-based). <br/>
+	<br/>
 Koks skirtumas tarp jų? fastQ formatas buvo sugalvotas išspręsti konkrečią sekos metu kylančią problemą: atsižvelgiant į tai, kaip veikia skirtingos sekvenavimo technologijos, tikimybė, kad teisingai identifikuotas bus nukleotidas labai skiriasi. Fasta formatas neturi standartizuoto būdo tai užkuduoti. Užtat fastQ yra papildomai atsirandanti nukleotido kokybės balų seka. (angl. sequence of quality scores) <br/>
 Iš esmės fastQ padeda tiesiog nustatyti papildomai sekos kokybę. <br/>
+<br/>
 Papildoma informacija, kuri yra pateikiama fastQ formate: <br/>
 a) Eilutė, prasidedanti @, kurioje yra sekos ID. <br/>
 b) Viena ar daugiau eilučių, kuriose yra seka. <br/>
@@ -19,15 +21,29 @@ c) Nauja eilutė, prasidedanti simboliu +, tuščia arba kartojanti sekos ID. <b
 d) Viena ar daugiau eilučių, kuriose yra kokybės balai. <br/>
 
 
-2. Prie mėnesio dienos kurią gimiau (8-diena) pridedu 33 ir ASCII simbolis būtų: 8+33=41 ")"
+2. Prie mėnesio dienos kurią gimiau (8-diena) pridedu 33 ir ASCII simbolis būtų: 8+33=41 ")" <br/>
 
-3. Jei būtų naudojami mažesni negu 33 ASCII simboliai tai sekos galėtų įgauti neigiamą kokybės balą.
+3. Jei būtų naudojami mažesni negu 33 ASCII simboliai tai sekos galėtų įgauti neigiamą kokybės balą. <br/>
 
-4. a) Nustačiau, jog koduotė naudojama failiuke buvo: arba Sanger Phread+33 arba Illumina 1.8+ Phread+33, nes tik jos praėjo mano parašyta scriptuką. Kitos koduotės netenkina, nes buvo panaudoti ASCII simboliai į jas neįeinantys. (Pavyzdžiui skaičiai). Kodėl programa meta, kad gali būti arba Sanger arba Illumina 1.8? Nes šios dvi koduotės yra panašios ir skiriasi tik per vieną ASCII simbolį "j", o kadangi failiuke nebuvo šito simbolio, negalima pilnai nustatyti, kuri koduotė čia yra naudojama.
+4. a) Nustačiau, jog koduotė naudojama failiuke buvo: arba Sanger Phread+33 arba Illumina 1.8+ Phread+33, nes tik jos praėjo mano parašyta scriptuką. Kitos koduotės netenkina, nes buvo panaudoti ASCII simboliai į jas neįeinantys. (Pavyzdžiui skaičiai). Kodėl programa meta, kad gali būti arba Sanger arba Illumina 1.8? Nes šios dvi koduotės yra panašios ir skiriasi tik per vieną ASCII simbolį "j", o kadangi failiuke nebuvo šito simbolio, negalima pilnai nustatyti, kuri koduotė čia yra naudojama. <br/>
 
-b) Atlikau papildomus skaičiavimus, kad surasti C/G nukleotidų pasiskirstymą reade. Tam naudojau kelias funkcijas, tai būtų: GCratio(sequence), į kurią paduodame DNR seką ir atrandom, o atgal gaunam jau santykį C/G nukleotidų esantį toje sekoje. Taip pat dar naudojau funkciją round(number,decimal=0). Jos dėka aš galiu apvalinti gautus atsakymus iki X.XX (dviejų skaičių po kablelio). Galu gale gautus atsakymus surašiau į excel dokumentą (GCAnalizė.xlsx, jis randasi "2Laboratorinis" aplankale). Iš susidariusios lentelės galima matyti, kad buvo keli "peakai", tai būtų iki 0.36, tada nuo to iki 0.54, bei dar vienas nuo to iki 0.70.
-	
-5. Šitame mėginyje buvo, pavyzdžiui, bakterijų su dideliu atspurumu karštai temperatūrai, nes buvo nemažai didelių C/G nukleotidų pasiskirstymų.
+b) Atlikau papildomus skaičiavimus, kad surasti C/G nukleotidų pasiskirstymą reade. Tam naudojau kelias funkcijas, tai būtų: GCratio(sequence), į kurią paduodame DNR seką ir atrandom, o atgal gaunam jau santykį C/G nukleotidų esantį toje sekoje. Taip pat dar naudojau funkciją round(number,decimal=0). Jos dėka aš galiu apvalinti gautus atsakymus iki X.XX (dviejų skaičių po kablelio). Galu gale gautus atsakymus surašiau į excel dokumentą (GCAnalizė.xlsx, jis randasi "2Laboratorinis" aplankale). Iš susidariusios lentelės galima matyti, kad buvo keli "peakai", tai būtų nuo 0.24 iki 0.39, tada nuo 0.47 iki 0.58, bei dar vienas nuo 0.64 iki 0.76. <br/>
+
+c) Šitai užduočiai atlikti naudojau internetinį įrankį https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastSearch&BLAST_SPEC=MicrobialGenomes kuris man padėjo atrasti, kokios bakterijos buvo šitame mėginyje. Paleidus programą, yra atspaudinamos sekos, kurios papuola tarp minėtų aukščiau "peakų". <br/>
+
+Tarkim, iš pirmo "peako" buvo paimtos šios sekos: <br/>
+GAAGTTCTAATGATTTATCGACTGCTAGACAGCAGATATGCTTAATTTAAGTACCTTATGCTAATTGGCACCATGGGAGTGGGACAGAAATGATATTTTCGTAAAATTTATTTCGTAGTCCCACCACAAATCGCATTGCCTGTAGAATTTC ir gautas rezultatas buvo, kad tai yra Stafilokokas – patogeninis mikroorganizmas. Papildoma informacija žiūtėti .txt dokumentą esantį aplankale "2Laboratorinis/RastosBakterijos/1Peako1variantas.txt </br>
+AACTTCACTCTTTGGTATATTGTTATTAGCAGGAAAACGATAAAACCTTTAATCAGAGATATTGAACTTCGTTTCTTTCTGTTAATAGCCTTAGGGGTGATCATTGTTACCTCTTTCCAGGTCTGGCATATAGGTATGTATGACTTGCATG ir gautas rezultatas buvo, kad tai yra Ešerichija marmotae - gramneigiamų, sporas nesudarančių, lazdelės formos bakterija. Papildoma informacija žiūtėti .txt dokumentą esantį aplankale "2Laboratorinis/RastosBakterijos/1Peako2variantas.txt </br>
+
+Iš antro "peako" buvo paimtos šios sekos: <br/>
+TTTGGTTCTTCCCGATAATCCTGGGATACACCGCGGGGAAACGCTTCGGCGGTAATCCATTTACTGCCATGGTGATTGGTGGAGCGTTAGTGCATCCATTAATTCTGACTGCTTTCGAGAACGGGCAAAAAGCGGATGCGCTGGGGCTGG ir gautas rezultatas buvo, kad tai yra Šigella sonnei - gramneigiama, lazdelės pavidalo, nemotorinė, sporą nesukelianti bakterija. Papildoma informacija žiūtėti .txt dokumentą esantį aplankale "2Laboratorinis/RastosBakterijos/2Peako1variantas.txt </br>
+GGTGGTTTCGCCGGGCATGGTTGATGCGCACACCCATATTTCTGAACCGGGTCGTAGCCACTGGGAAGGTTATGAAACCGGTACTCGCGCAGCGGCAAAAGGTGGTATCACCACCATGATCGAAATGCCGCTCAACCAGCTGCCTGCAACG ir gautas rezultatas buvo, kad tai yra Ešerichija coli (lietuviškai žarninės lazdelės bakterija). Kaip matoma, jau buvo Ešerichijos šeimos bakterija šitame mėginyje, matyt jų yra dar ir daugiau. Papildoma informacija žiūtėti .txt dokumentą esantį aplankale "2Laboratorinis/RastosBakterijos/2Peako2variantas.txt </br>
+
+Ir iš paskutinio "peako" buvo paimtos šios sekos: <br/>
+GACGTCCTGGACTGCGGCAACGCCGGAACCCTCATGCGCCTCCTCCTCGGCCTCCTCGCGGGCCAGGAGGGGCTTTTCGCCGTCCTCACCGGGGACGCCTCCTTGAGGCGCCGCCCCATGGGCCGGGTGGTGGCCCCCTTGAGGGCCATGG ir gautas rezultatas buvo, kad tai yra Thermus thermophilus - yra gramneigiama bakterija, naudojama daugelyje biotechnologinių taikymo sričių, įskaitant kaip pavyzdinį organizmą genetinei manipuliacijai, struktūrinę genomiką ir sistemų biologiją. Termo, šitoje vietoje reiškia, kad bakterija yra ypač atspari karščiui. Papildoma informacija žiūtėti .txt dokumentą esantį aplankale "2Laboratorinis/RastosBakterijos/3Peako1variantas.txt </br>
+GTCCACGGCGAAGGCCAGGTCCACCAGGTTGATCAGGAGGACCACCCGCCAGAACGTCTTCGCCGAGGCCTCGGGGAGGGGCTTCCCCTCGGGGTGGTTGCGGAAGTGCCGGACCATGAGGTAGACGAGGTAGAGCCCCCCGAGGACCTGG ir gautas rezultatas buvo, kad tai yra taip pat Thermus thermophilus bakterija. Tai nėra nuostabu, nes šitame "peake" yra labai didelis kiekis C/G nukleotidų. Papildoma informacija žiūtėti .txt dokumentą esantį aplankale "2Laboratorinis/RastosBakterijos/3Peako2variantas.txt </br>
+
+5. Šitame mėginyje buvo, pavyzdžiui, bakterijų su dideliu atspurumu karštai temperatūrai (minėtas aukščiau pavyzdys Thermo Thermophilus), nes buvo nemažai didelių C/G nukleotidų pasiskirstymų. Taip pat bakterijų, kurios randamos šiltakraujuose organizmuose (pavyzdžiui Ešerichija coli). Be abejo, tikrai nepatikrinau visų DNR sekų atitikančių minėtus "peakus", tačiau prabėgau pro dalį jų ir aprašiau būtent tai, ką radau. Pastebėjau, kad bakterijų radimo laikas duomenų bazėje naudojant BLAST buvo vidutiniškai apie 30 sekundžių. <br/>
 
 # Pirmas laboratorinis darbas
 
@@ -82,7 +98,7 @@ Funkcija "completeAssignment(file_name, number)" yra naudojama įvygdyti visas u
 Jai reikia būtinai paduoti failo pavadinimą, kad išparsinti reikalingą failą, taip pat reikalingas ir unikalus indeksas, šiuo atveju
 "number", kad galima būtų išsaugoti specifiškus kodonus/dikodonus į sąrašus.
 
-# 1 Laboratorinio darbo analizė
+# Pirmojo laboratorinio darbo analizė
 
 Kaip skaičiavau atstumų matricą tiek kodonams, tiek dikodonams aprašiau anksčiau (prie funkcijų).
 

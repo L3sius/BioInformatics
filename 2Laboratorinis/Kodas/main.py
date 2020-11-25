@@ -33,12 +33,12 @@ RANGES = {
 }
 
 
-def checkEncoding(encoding):
+def checkEncoding(encoding, encoding_name):
     value = True
     i = len(unique_ascii_symbols)
     while i > 0:
         if unique_ascii_symbols[i - 1] not in encoding:
-            print("Does not, because contains character: ", unique_ascii_symbols[i - 1])
+            print("Is not encoded in ", encoding_name, " because contains character: ", unique_ascii_symbols[i - 1])
             value = False
             break
         i -= 1
@@ -49,12 +49,10 @@ def checkEncoding(encoding):
 def listToString(s):
     # initialize an empty string
     str1 = ""
-
     # traverse in the string
     for ele in s:
         str1 += ele
-
-        # return string
+    # return string
     return str1
 
 
@@ -91,13 +89,23 @@ if __name__ == "__main__":
         # a_base = sequence.count('A')
         # print(sequence, qual, a_base, sequence_len)
         qual_list.append(qual)
-        print(header_1, sequence, header_2, qual)
+        # print(header_1, sequence, header_2, qual)
         GCRatio_list.append(GCratio(sequence))
+        if 0.24 <= GCratio(sequence) <= 0.39:
+            # Prints sequences that are in the first peak
+            print("First peak sequence: ", sequence)
+        if 0.47 <= GCratio(sequence) <= 0.58:
+            # Prints sequences that are in the second peak
+            print("Second peak sequence: ", sequence)
+        if 0.64 <= GCratio(sequence) <= 0.76:
+            # Prints sequences that are in the third peak
+            print("Third peak sequence: ", sequence)
+
     # convert list to string and count ascii characters
 
     # print(Counter((listToString(qual_list))))
     unique_ascii_symbols = list(set(listToString(qual_list)))
-    print(unique_ascii_symbols)
+    print("Unique ASCII symbols that were found", unique_ascii_symbols)
     # print(len(unique_ascii_symbols))
 
     sanger = """!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHI"""
@@ -107,18 +115,19 @@ if __name__ == "__main__":
     illumina_1_8 = """!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJ"""
 
     # check what encoding is used
-    if checkEncoding(sanger):
+    if checkEncoding(sanger, "sanger"):
         print("The encoding is done in sanger")
-    if checkEncoding(solexa):
+    if checkEncoding(solexa, "solexa"):
         print("The encoding is done in solexa")
-    if checkEncoding(illumina_1_3):
+    if checkEncoding(illumina_1_3, "illumina 1.3+"):
         print("The encoding is done in illumina 1.3+")
-    if checkEncoding(illumina_1_5):
+    if checkEncoding(illumina_1_5, "illumina 1.5+"):
         print("The encoding is done in illumina 1.5+")
-    if checkEncoding(illumina_1_8):
+    if checkEncoding(illumina_1_8, "illumina 1.8+"):
         print("The encoding is done in illumina 1.8+")
 
     counter = Counter(GCRatio_list)
     # Print all the CGRatio's
+    print("All CGRatio's")
     print(counter)
 
